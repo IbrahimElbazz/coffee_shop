@@ -1,6 +1,6 @@
 import 'package:coffee_shop/core/routing/animation_route.dart';
 import 'package:coffee_shop/core/routing/routes.dart';
-import 'package:coffee_shop/features/login/ui/login_screen.dart';
+import 'package:coffee_shop/features/login/ui/screens/login_screen.dart';
 import 'package:coffee_shop/features/onboarding/ui/onboarding_1.dart';
 import 'package:coffee_shop/features/onboarding/ui/onboarding_2.dart';
 import 'package:coffee_shop/features/onboarding/ui/onboarding_3.dart';

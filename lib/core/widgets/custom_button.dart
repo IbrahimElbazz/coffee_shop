@@ -26,7 +26,7 @@ class CustomButton extends StatelessWidget {
       ),
       onPressed: onPressed,
       child: Container(
-        width: width,
+        width: width.w,
         height: 60.h,
         color: AppColor.buttom,
         child: Center(
