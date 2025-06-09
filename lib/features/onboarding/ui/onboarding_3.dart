@@ -7,8 +7,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class Onboarding1 extends StatelessWidget {
-  const Onboarding1({super.key});
+class Onboarding3 extends StatelessWidget {
+  const Onboarding3({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -46,14 +46,14 @@ class Onboarding1 extends StatelessWidget {
               ),
               GapH(height: 86),
               SizedBox(
-                width: 304.w,
-                height: 240.h,
-                child: Image.asset('assets/image/onboarding_1.png'),
+                width: 255.w,
+                height: 255.h,
+                child: Image.asset('assets/image/onboarding_3.png'),
               ),
-              GapH(height: 100),
+              GapH(height: 88),
               Text(
                 textAlign: TextAlign.center,
-                'Choose and customize your drinks with simplicity',
+                'Who doesn’t love rewards? We LOVE rewards!',
                 style: TextStyle(
                   color: Colors.black,
                   fontSize: 20.sp,
@@ -64,7 +64,7 @@ class Onboarding1 extends StatelessWidget {
               SizedBox(
                 width: 291.w,
                 child: Text(
-                  'You want your drink and you want it your way so be bold and customize\n the way that makes you the\n happiest!',
+                  'If you’re like us you love getting freebies and rewards! That’s why\nwe have the best reward program \nin the coffee game!',
                   style: TextStyle(
                     color: Colors.black,
                     fontSize: 16.sp,
@@ -72,16 +72,19 @@ class Onboarding1 extends StatelessWidget {
                   ),
                 ),
               ),
-              GapH(height: 132),
+              GapH(height: 129),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  SvgPicture.asset('assets/icons/loading_1.svg'),
+                  SvgPicture.asset('assets/icons/loading_3.svg'),
                   CustomButton(
                     text: 'Button',
                     width: 135.w,
                     onPressed: () {
-                      context.pushNamed(Routes.onboarding_2);
+                      context.pushNamedAndRemoveUntil(
+                        Routes.login,
+                        predicate: (route) => false,
+                      );
                     },
                   ),
                 ],
