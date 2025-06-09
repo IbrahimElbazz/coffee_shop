@@ -52,7 +52,7 @@ class LoginScreen extends StatelessWidget {
                     Text(
                       'Sign in',
                       style: TextStyle(
-                        color: AppColor.buttom,
+                        color: AppColor.button,
                         fontSize: 28.sp,
                         fontFamily: 'Poppins',
                         fontWeight: FontWeight.w700,
@@ -62,7 +62,7 @@ class LoginScreen extends StatelessWidget {
                     Text(
                       'It’s coffee time! Login and lets get all the coffee in the world! Or at least iced\ncoffee. ',
                       style: TextStyle(
-                        color: AppColor.buttom,
+                        color: AppColor.button,
                         fontSize: 14.sp,
                         fontFamily: 'Poppins',
                         fontWeight: FontWeight.w400,
@@ -93,7 +93,16 @@ class LoginScreen extends StatelessWidget {
                     GapH(height: 8),
                     PassContainer(),
                     GapH(height: 30),
-                    CustomButton(width: 320, text: 'LOGIN', onPressed: () {}),
+                    CustomButton(
+                      width: 320,
+                      text: 'LOGIN',
+                      onPressed: () {
+                        context.pushNamedAndRemoveUntil(
+                          Routes.appNavigation,
+                          predicate: (route) => false,
+                        );
+                      },
+                    ),
                     GapH(height: 84),
                     Row(
                       spacing: 10.w,

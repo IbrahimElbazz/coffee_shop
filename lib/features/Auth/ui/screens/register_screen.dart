@@ -51,7 +51,7 @@ class RegisterScreen extends StatelessWidget {
                     Text(
                       'Sign Up',
                       style: TextStyle(
-                        color: AppColor.buttom,
+                        color: AppColor.button,
                         fontSize: 28.sp,
                         fontFamily: 'Poppins',
                         fontWeight: FontWeight.w700,
@@ -61,7 +61,7 @@ class RegisterScreen extends StatelessWidget {
                     Text(
                       'We are so excited you’re ready to \nbecome apart of our coffee network! \ndon’t forget  check out your perks!',
                       style: TextStyle(
-                        color: AppColor.buttom,
+                        color: AppColor.button,
                         fontSize: 14.sp,
                         fontFamily: 'Poppins',
                         fontWeight: FontWeight.w400,

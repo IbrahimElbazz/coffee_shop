@@ -17,8 +17,8 @@ class CustomButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
-        backgroundColor: AppColor.buttom,
-        foregroundColor: AppColor.buttom,
+        backgroundColor: AppColor.button,
+        foregroundColor: AppColor.button,
 
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(22.r),
@@ -28,7 +28,7 @@ class CustomButton extends StatelessWidget {
       child: Container(
         width: width.w,
         height: 60.h,
-        color: AppColor.buttom,
+        color: AppColor.button,
         child: Center(
           child: Text(
             text,

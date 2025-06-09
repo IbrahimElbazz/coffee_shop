@@ -5,4 +5,5 @@ class Routes {
   static const onboarding_3 = '/onboarding_3';
   static const login = '/login';
   static const register = '/register';
+  static const appNavigation = '/appNavigation';
 }

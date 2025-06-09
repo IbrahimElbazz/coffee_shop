@@ -2,6 +2,7 @@ import 'package:coffee_shop/core/routing/animation_route.dart';
 import 'package:coffee_shop/core/routing/routes.dart';
 import 'package:coffee_shop/features/Auth/ui/screens/login_screen.dart';
 import 'package:coffee_shop/features/Auth/ui/screens/register_screen.dart';
+import 'package:coffee_shop/features/app_navigation/app_navigation.dart';
 import 'package:coffee_shop/features/onboarding/ui/onboarding_1.dart';
 import 'package:coffee_shop/features/onboarding/ui/onboarding_2.dart';
 import 'package:coffee_shop/features/onboarding/ui/onboarding_3.dart';
@@ -25,6 +26,8 @@ class AppRouter {
         return AppHelperFunctions().slideFromBottomTransition(
           page: const RegisterScreen(),
         );
+      case Routes.appNavigation:
+        return AppHelperFunctions().fadeTransition(page: const AppNavigation());
       default:
         return null;
     }
