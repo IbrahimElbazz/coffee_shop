@@ -1,6 +1,4 @@
 import 'package:coffee_shop/core/drinks/drinks.dart';
-import 'package:coffee_shop/core/routing/routes.dart';
-import 'package:coffee_shop/core/widgets/custom_button.dart';
 import 'package:coffee_shop/core/widgets/gap.dart';
 import 'package:coffee_shop/features/home/ui/screens/order_details_screen.dart';
 import 'package:coffee_shop/features/home/ui/widgets/discount_card.dart';
@@ -9,9 +7,15 @@ import 'package:coffee_shop/features/home/ui/widgets/welcome_user.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  late bool favo;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -71,20 +75,25 @@ class HomeScreen extends StatelessWidget {
                         MaterialPageRoute(
                           builder: (context) {
                             return OrderDetailsScreen(
-                              title: Drinks.homeDrinks[index]['title']!,
-                              image: Drinks.homeDrinks[index]['image']!,
+                              title:
+                                  Drinks.homeDrinks[index]['title'] as String,
+                              image:
+                                  Drinks.homeDrinks[index]['image'] as String,
                             );
                           },
                         ),
                       );
                     },
                     child: DrinkCard(
-                      title: Drinks.homeDrinks[index]['title']!,
+                      isFavorite:
+                          Drinks.homeDrinks[index]['isFavorite'] as bool,
+                      fav: () {},
+                      title: Drinks.homeDrinks[index]['title'] as String,
                       image: Hero(
                         transitionOnUserGestures: true,
-                        tag: Drinks.homeDrinks[index]['title']!,
+                        tag: Drinks.homeDrinks[index]['title'] as String,
                         child: Image.asset(
-                          Drinks.homeDrinks[index]['image']!,
+                          Drinks.homeDrinks[index]['image'] as String,
                           width: 100.w,
                           height: 100.h,
                         ),

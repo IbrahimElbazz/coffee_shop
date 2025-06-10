@@ -3,11 +3,25 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class DrinkCard extends StatelessWidget {
-  const DrinkCard({super.key, required this.title, required this.image});
+class DrinkCard extends StatefulWidget {
+  DrinkCard({
+    super.key,
+    required this.title,
+    required this.image,
+    this.fav,
+    this.isFavorite = false,
+  });
   final String title;
   final Widget image;
+  void Function()? fav;
 
+  bool isFavorite;
+
+  @override
+  State<DrinkCard> createState() => _DrinkCardState();
+}
+
+class _DrinkCardState extends State<DrinkCard> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -36,17 +50,20 @@ class DrinkCard extends StatelessWidget {
                 height: 20.h,
                 child: IconButton(
                   padding: EdgeInsets.zero,
-                  onPressed: () {},
-                  icon: SvgPicture.asset('assets/icons/love.svg'),
+                  onPressed: widget.fav,
+                  icon: SvgPicture.asset(
+                    'assets/icons/love.svg',
+                    color: widget.isFavorite ? Colors.red : Colors.grey,
+                  ),
                 ),
               ),
               GapW(width: 10),
             ],
           ),
-          image,
+          widget.image,
           GapH(height: 10),
           Text(
-            title,
+            widget.title,
             textAlign: TextAlign.center,
             style: TextStyle(
               color: const Color(0xFF212121),

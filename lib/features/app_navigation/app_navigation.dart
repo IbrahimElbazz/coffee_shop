@@ -1,3 +1,4 @@
+import 'package:coffee_shop/features/account/account_screen.dart';
 import 'package:coffee_shop/features/orders/ui/screens/orders_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:coffee_shop/core/theme/app_color.dart';
@@ -18,7 +19,7 @@ class _AppNavigationState extends State<AppNavigation> {
   static const List<Widget> _widgetOptions = <Widget>[
     HomeScreen(),
     OrdersScreen(),
-    HomeScreen(),
+    AccountScreen(),
   ];
 
   void _onItemTapped(int index) {
