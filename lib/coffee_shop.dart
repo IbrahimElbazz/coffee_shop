@@ -18,7 +18,7 @@ class CoffeeShop extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           title: 'Coffe Shop',
           onGenerateRoute: appRouter.generateRoute,
-          initialRoute: Routes.login,
+          initialRoute: Routes.appNavigation,
         );
       },
     );

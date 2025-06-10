@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:coffee_shop/core/theme/app_color.dart';
 import 'package:coffee_shop/features/home/ui/screens/home_screen.dart';
-
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:badges/badges.dart' as badges;
 
 class AppNavigation extends StatefulWidget {
   const AppNavigation({super.key});
@@ -28,6 +29,29 @@ class _AppNavigationState extends State<AppNavigation> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: Drawer(),
+      appBar: AppBar(
+        shadowColor: Colors.black.withOpacity(0.3),
+        elevation: 3,
+        title: SvgPicture.asset(
+          'assets/icons/logo.svg',
+          width: 35.w,
+          height: 50.h,
+        ),
+
+        centerTitle: true,
+        backgroundColor: const Color(0xFFFEFEF8),
+        actions: [
+          badges.Badge(
+            badgeStyle: badges.BadgeStyle(badgeColor: AppColor.green),
+            badgeContent: Text('0', style: TextStyle(color: Colors.white)),
+            child: Icon(Icons.shopping_bag_outlined, size: 31.w),
+          ),
+
+          SizedBox(width: 20.w),
+        ],
+      ),
+
       body: _widgetOptions.elementAt(_selectedIndex),
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
