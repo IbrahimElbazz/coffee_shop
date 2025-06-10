@@ -6,7 +6,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 class DrinkCard extends StatelessWidget {
   const DrinkCard({super.key, required this.title, required this.image});
   final String title;
-  final String image;
+  final Widget image;
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +43,7 @@ class DrinkCard extends StatelessWidget {
               GapW(width: 10),
             ],
           ),
-          Image.asset(image, width: 100.w, height: 100.h),
+          image,
           GapH(height: 10),
           Text(
             title,

@@ -6,6 +6,7 @@ import 'package:coffee_shop/features/app_navigation/app_navigation.dart';
 import 'package:coffee_shop/features/onboarding/ui/onboarding_1.dart';
 import 'package:coffee_shop/features/onboarding/ui/onboarding_2.dart';
 import 'package:coffee_shop/features/onboarding/ui/onboarding_3.dart';
+import 'package:coffee_shop/features/home/ui/screens/order_details_screen.dart';
 import 'package:coffee_shop/features/splash/splash.dart';
 import 'package:flutter/material.dart';
 
@@ -28,6 +29,7 @@ class AppRouter {
         );
       case Routes.appNavigation:
         return AppHelperFunctions().fadeTransition(page: const AppNavigation());
+
       default:
         return null;
     }

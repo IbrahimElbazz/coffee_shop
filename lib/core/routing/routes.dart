@@ -6,4 +6,5 @@ class Routes {
   static const login = '/login';
   static const register = '/register';
   static const appNavigation = '/appNavigation';
+  static const orderDetailsScreen = '/order_details_screen';
 }

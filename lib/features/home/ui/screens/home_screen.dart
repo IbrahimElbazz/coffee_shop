@@ -1,6 +1,8 @@
 import 'package:coffee_shop/core/drinks/drinks.dart';
+import 'package:coffee_shop/core/routing/routes.dart';
 import 'package:coffee_shop/core/widgets/custom_button.dart';
 import 'package:coffee_shop/core/widgets/gap.dart';
+import 'package:coffee_shop/features/home/ui/screens/order_details_screen.dart';
 import 'package:coffee_shop/features/home/ui/widgets/discount_card.dart';
 import 'package:coffee_shop/features/home/ui/widgets/drink_card.dart';
 import 'package:coffee_shop/features/home/ui/widgets/welcome_user.dart';
@@ -62,9 +64,32 @@ class HomeScreen extends StatelessWidget {
 
                 shrinkWrap: true,
                 itemBuilder: (context, index) {
-                  return DrinkCard(
-                    title: Drinks.homeDrinks[index]['title']!,
-                    image: Drinks.homeDrinks[index]['image']!,
+                  return GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) {
+                            return OrderDetailsScreen(
+                              title: Drinks.homeDrinks[index]['title']!,
+                              image: Drinks.homeDrinks[index]['image']!,
+                            );
+                          },
+                        ),
+                      );
+                    },
+                    child: DrinkCard(
+                      title: Drinks.homeDrinks[index]['title']!,
+                      image: Hero(
+                        transitionOnUserGestures: true,
+                        tag: Drinks.homeDrinks[index]['title']!,
+                        child: Image.asset(
+                          Drinks.homeDrinks[index]['image']!,
+                          width: 100.w,
+                          height: 100.h,
+                        ),
+                      ),
+                    ),
                   );
                 },
               ),
