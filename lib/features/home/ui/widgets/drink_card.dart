@@ -53,7 +53,6 @@ class DrinkCard extends StatelessWidget {
               fontSize: 16.sp,
               fontFamily: 'Poppins',
               fontWeight: FontWeight.w500,
-              height: 1.43,
             ),
           ),
         ],
