@@ -1,5 +1,6 @@
 import 'package:coffee_shop/core/widgets/custom_button.dart';
 import 'package:coffee_shop/core/widgets/gap.dart';
+import 'package:coffee_shop/features/app_navigation/sala.dart';
 import 'package:coffee_shop/features/home/ui/widgets/counter.dart';
 import 'package:coffee_shop/features/home/ui/widgets/image_and_name_card.dart';
 import 'package:flutter/material.dart';
@@ -7,8 +8,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:badges/badges.dart' as badges;
 import 'package:coffee_shop/core/theme/app_color.dart';
+import 'package:provider/provider.dart';
 
-class OrderDetailsScreen extends StatelessWidget {
+class OrderDetailsScreen extends StatefulWidget {
   const OrderDetailsScreen({
     super.key,
     required this.title,
@@ -17,6 +19,11 @@ class OrderDetailsScreen extends StatelessWidget {
   final String title;
   final String image;
 
+  @override
+  State<OrderDetailsScreen> createState() => _OrderDetailsScreenState();
+}
+
+class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,7 +42,14 @@ class OrderDetailsScreen extends StatelessWidget {
         actions: [
           badges.Badge(
             badgeStyle: badges.BadgeStyle(badgeColor: AppColor.green),
-            badgeContent: Text('0', style: TextStyle(color: Colors.white)),
+            badgeContent: Consumer<OrderState>(
+              builder: (context, orderState, child) {
+                return Text(
+                  orderState.orderNumber.toString(),
+                  style: TextStyle(color: Colors.white),
+                );
+              },
+            ),
             child: Icon(Icons.shopping_bag_outlined, size: 31.w),
           ),
 
@@ -46,7 +60,7 @@ class OrderDetailsScreen extends StatelessWidget {
       body: Column(
         children: [
           GapH(height: 40),
-          ImageAndNameCard(title: title, image: image),
+          ImageAndNameCard(title: widget.title, image: widget.image),
           Padding(
             padding: EdgeInsets.symmetric(vertical: 20.h, horizontal: 16.w),
             child: Column(
@@ -56,7 +70,7 @@ class OrderDetailsScreen extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      title,
+                      widget.title,
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         color: Colors.black,
@@ -115,7 +129,15 @@ class OrderDetailsScreen extends StatelessWidget {
                 CustomButton(
                   width: 600.w,
                   text: 'Place Order',
-                  onPressed: () {},
+                  onPressed: () {
+                    // In your order details screen
+                    final orderState = Provider.of<OrderState>(
+                      context,
+                      listen: false,
+                    );
+                    orderState
+                        .updateOrderNumber(); // This will increase the order number by 1
+                  },
                 ),
               ],
             ),

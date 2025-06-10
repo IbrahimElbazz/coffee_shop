@@ -1,4 +1,5 @@
 import 'package:coffee_shop/features/account/account_screen.dart';
+import 'package:coffee_shop/features/app_navigation/sala.dart';
 import 'package:coffee_shop/features/orders/ui/screens/orders_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:coffee_shop/core/theme/app_color.dart';
@@ -6,6 +7,7 @@ import 'package:coffee_shop/features/home/ui/screens/home_screen.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:badges/badges.dart' as badges;
+import 'package:provider/provider.dart';
 
 class AppNavigation extends StatefulWidget {
   const AppNavigation({super.key});
@@ -46,7 +48,14 @@ class _AppNavigationState extends State<AppNavigation> {
         actions: [
           badges.Badge(
             badgeStyle: badges.BadgeStyle(badgeColor: AppColor.green),
-            badgeContent: Text('0', style: TextStyle(color: Colors.white)),
+            badgeContent: Consumer<OrderState>(
+              builder: (context, orderState, child) {
+                return Text(
+                  orderState.orderNumber.toString(),
+                  style: TextStyle(color: Colors.white),
+                );
+              },
+            ),
             child: Icon(Icons.shopping_bag_outlined, size: 31.w),
           ),
 
