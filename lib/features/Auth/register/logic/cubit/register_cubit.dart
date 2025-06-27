@@ -5,17 +5,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:random_string/random_string.dart';
 
 class RegisterCubit extends Cubit<RegisterState> {
   RegisterCubit() : super(RegisterInitial());
   FirebaseAuth auth = FirebaseAuth.instance;
   CollectionReference users = FirebaseFirestore.instance.collection('users');
-
   TextEditingController email = TextEditingController();
   TextEditingController password = TextEditingController();
   TextEditingController userName = TextEditingController();
   TextEditingController phone = TextEditingController();
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  String idRoundom = randomString(10);
+
   void register() async {
     emit(RegisterLoading());
     try {
@@ -24,7 +26,7 @@ class RegisterCubit extends Cubit<RegisterState> {
             email: email.text,
             password: password.text,
           );
-      addUser(userName.text, phone.text, email.text, password.text);
+      addUser(idRoundom, userName.text, phone.text, email.text, password.text);
       emit(RegisterSuccess());
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
@@ -40,6 +42,7 @@ class RegisterCubit extends Cubit<RegisterState> {
   }
 
   Future<void> addUser(
+    String id,
     String userName,
     String phone,
     String email,
@@ -47,6 +50,7 @@ class RegisterCubit extends Cubit<RegisterState> {
   ) {
     return users
         .add({
+          'id': id,
           'userName': userName,
           'phone': phone,
           'email': email,
