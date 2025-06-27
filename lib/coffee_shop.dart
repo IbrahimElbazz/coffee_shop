@@ -3,10 +3,11 @@ import 'package:coffee_shop/core/routing/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:toastification/toastification.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class CoffeeShop extends StatelessWidget {
-  const CoffeeShop({super.key});
-
+  CoffeeShop({super.key});
+  final currentUser = FirebaseAuth.instance.currentUser;
   @override
   Widget build(BuildContext context) {
     final AppRouter appRouter = AppRouter();
@@ -20,7 +21,8 @@ class CoffeeShop extends StatelessWidget {
             debugShowCheckedModeBanner: false,
             title: 'Coffe Shop',
             onGenerateRoute: appRouter.generateRoute,
-            initialRoute: Routes.login,
+            initialRoute:
+                currentUser != null ? Routes.appNavigation : Routes.splash,
           ),
         );
       },

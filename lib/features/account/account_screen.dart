@@ -1,8 +1,10 @@
+import 'package:coffee_shop/core/routing/extensions.dart';
+import 'package:coffee_shop/core/routing/routes.dart';
 import 'package:coffee_shop/core/widgets/custom_button.dart';
 import 'package:coffee_shop/core/widgets/gap.dart';
-import 'package:coffee_shop/features/orders/ui/screens/orders_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class AccountScreen extends StatelessWidget {
   const AccountScreen({super.key});
@@ -126,7 +128,15 @@ class AccountScreen extends StatelessWidget {
             CustomButton(
               width: double.infinity,
               text: 'Logout',
-              onPressed: () {},
+              onPressed: () async {
+                await FirebaseAuth.instance.signOut();
+                FirebaseAuth.instance.currentUser != null
+                    ? null
+                    : context.pushNamedAndRemoveUntil(
+                      Routes.login,
+                      predicate: (route) => false,
+                    );
+              },
             ),
           ],
         ),

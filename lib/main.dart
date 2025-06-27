@@ -14,7 +14,7 @@ void main() async {
   runApp(
     ChangeNotifierProvider(
       create: (context) => OrderState(),
-      child: const CoffeeShop(),
+      child: CoffeeShop(),
     ),
   );
 }

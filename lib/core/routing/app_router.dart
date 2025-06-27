@@ -1,5 +1,6 @@
 import 'package:coffee_shop/core/routing/animation_route.dart';
 import 'package:coffee_shop/core/routing/routes.dart';
+import 'package:coffee_shop/features/Auth/login/logic/cubit/login_cubit.dart';
 import 'package:coffee_shop/features/Auth/register/logic/cubit/register_cubit.dart';
 import 'package:coffee_shop/features/Auth/login/ui/login_screen.dart';
 import 'package:coffee_shop/features/Auth/register/ui/register_screen.dart';
@@ -23,7 +24,12 @@ class AppRouter {
       case Routes.onboarding_3:
         return AppHelperFunctions().fadeTransition(page: const Onboarding3());
       case Routes.login:
-        return AppHelperFunctions().fadeTransition(page: const LoginScreen());
+        return AppHelperFunctions().fadeTransition(
+          page: BlocProvider(
+            create: (context) => LoginCubit(),
+            child: const LoginScreen(),
+          ),
+        );
       case Routes.register:
         return AppHelperFunctions().slideFromBottomTransition(
           page: BlocProvider(
