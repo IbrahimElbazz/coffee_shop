@@ -2,6 +2,7 @@ import 'package:coffee_shop/core/routing/app_router.dart';
 import 'package:coffee_shop/core/routing/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:toastification/toastification.dart';
 
 class CoffeeShop extends StatelessWidget {
   const CoffeeShop({super.key});
@@ -14,11 +15,13 @@ class CoffeeShop extends StatelessWidget {
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (_, child) {
-        return MaterialApp(
-          debugShowCheckedModeBanner: false,
-          title: 'Coffe Shop',
-          onGenerateRoute: appRouter.generateRoute,
-          initialRoute: Routes.splash,
+        return ToastificationWrapper(
+          child: MaterialApp(
+            debugShowCheckedModeBanner: false,
+            title: 'Coffe Shop',
+            onGenerateRoute: appRouter.generateRoute,
+            initialRoute: Routes.login,
+          ),
         );
       },
     );

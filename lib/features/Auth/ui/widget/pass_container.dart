@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class PassContainer extends StatefulWidget {
-  const PassContainer({super.key});
+  const PassContainer({super.key, this.controller});
+  final TextEditingController? controller;
 
   @override
   State<PassContainer> createState() => _PassContainerState();
@@ -14,7 +15,8 @@ class _PassContainerState extends State<PassContainer> {
   @override
   Widget build(BuildContext context) {
     return CustomTextField(
-      obsecure: obsecure,
+      controller: widget.controller,
+      obscure: obsecure,
       hint: 'Type your password',
       icon: IconButton(
         onPressed: () {

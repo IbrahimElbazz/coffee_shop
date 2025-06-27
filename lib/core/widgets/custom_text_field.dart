@@ -7,16 +7,25 @@ class CustomTextField extends StatelessWidget {
     super.key,
     required this.hint,
     this.icon,
-    this.obsecure,
+    this.obscure,
+    this.controller,
   });
   final String hint;
   final IconButton? icon;
-  final bool? obsecure;
+  final bool? obscure;
+  final TextEditingController? controller;
 
   @override
   Widget build(BuildContext context) {
-    return TextField(
-      obscureText: obsecure ?? false,
+    return TextFormField(
+      validator: (value) {
+        if (value == null || value.isEmpty) {
+          return 'Please Enter $hint';
+        }
+        return null;
+      },
+      controller: controller,
+      obscureText: obscure ?? false,
       decoration: InputDecoration(
         fillColor: Colors.white,
         suffixIcon: icon,
@@ -29,15 +38,17 @@ class CustomTextField extends StatelessWidget {
         ),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(22.r),
-          borderSide: BorderSide(color: AppColor.grey),
+          borderSide: BorderSide(color: AppColor.grey.withOpacity(0.4)),
         ),
+
         disabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(22.r),
-          borderSide: BorderSide(color: AppColor.grey),
+          borderSide: BorderSide(color: AppColor.grey.withOpacity(0.4)),
         ),
+
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(22.r),
-          borderSide: BorderSide(color: AppColor.grey),
+          borderSide: BorderSide(color: AppColor.button),
         ),
       ),
     );

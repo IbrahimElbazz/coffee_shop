@@ -1,14 +1,15 @@
 import 'package:coffee_shop/core/routing/animation_route.dart';
 import 'package:coffee_shop/core/routing/routes.dart';
+import 'package:coffee_shop/features/Auth/register/logic/cubit/register_cubit.dart';
 import 'package:coffee_shop/features/Auth/ui/screens/login_screen.dart';
-import 'package:coffee_shop/features/Auth/ui/screens/register_screen.dart';
+import 'package:coffee_shop/features/Auth/register/ui/register_screen.dart';
 import 'package:coffee_shop/features/app_navigation/app_navigation.dart';
 import 'package:coffee_shop/features/onboarding/ui/onboarding_1.dart';
 import 'package:coffee_shop/features/onboarding/ui/onboarding_2.dart';
 import 'package:coffee_shop/features/onboarding/ui/onboarding_3.dart';
-import 'package:coffee_shop/features/home/ui/screens/order_details_screen.dart';
 import 'package:coffee_shop/features/splash/splash.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class AppRouter {
   Route<dynamic>? generateRoute(RouteSettings settings) {
@@ -25,7 +26,10 @@ class AppRouter {
         return AppHelperFunctions().fadeTransition(page: const LoginScreen());
       case Routes.register:
         return AppHelperFunctions().slideFromBottomTransition(
-          page: const RegisterScreen(),
+          page: BlocProvider(
+            create: (context) => RegisterCubit(),
+            child: const RegisterScreen(),
+          ),
         );
       case Routes.appNavigation:
         return AppHelperFunctions().fadeTransition(page: const AppNavigation());
