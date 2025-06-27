@@ -1,7 +1,7 @@
 import 'package:coffee_shop/core/routing/animation_route.dart';
 import 'package:coffee_shop/core/routing/routes.dart';
 import 'package:coffee_shop/features/Auth/register/logic/cubit/register_cubit.dart';
-import 'package:coffee_shop/features/Auth/ui/screens/login_screen.dart';
+import 'package:coffee_shop/features/Auth/login/ui/login_screen.dart';
 import 'package:coffee_shop/features/Auth/register/ui/register_screen.dart';
 import 'package:coffee_shop/features/app_navigation/app_navigation.dart';
 import 'package:coffee_shop/features/onboarding/ui/onboarding_1.dart';

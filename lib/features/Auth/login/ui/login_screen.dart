@@ -4,7 +4,7 @@ import 'package:coffee_shop/core/theme/app_color.dart';
 import 'package:coffee_shop/core/widgets/custom_button.dart';
 import 'package:coffee_shop/core/widgets/custom_text_field.dart';
 import 'package:coffee_shop/core/widgets/gap.dart';
-import 'package:coffee_shop/features/Auth/ui/widget/pass_container.dart';
+import 'package:coffee_shop/core/widgets/pass_text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';

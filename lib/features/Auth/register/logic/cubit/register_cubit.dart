@@ -14,6 +14,7 @@ class RegisterCubit extends Cubit<RegisterState> {
   TextEditingController email = TextEditingController();
   TextEditingController password = TextEditingController();
   TextEditingController userName = TextEditingController();
+  TextEditingController phone = TextEditingController();
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
   void register() async {
     emit(RegisterLoading());
@@ -23,26 +24,34 @@ class RegisterCubit extends Cubit<RegisterState> {
             email: email.text,
             password: password.text,
           );
-      addUser(userName.text, email.text, password.text);
+      addUser(userName.text, phone.text, email.text, password.text);
       emit(RegisterSuccess());
-    }
-    // on FirebaseAuthException catch (e) {
-    //   if (e.code == 'weak-password') {
-    //     emit(RegisterError(message: 'The password provided is too weak.'));
-    //   } else if (e.code == 'email-already-in-use') {
-    //     emit(
-    //       RegisterError(message: 'The account already exists for that email.'),
-    //     );
-    //   }
-    // }
-    catch (e) {
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'weak-password') {
+        emit(RegisterError(message: 'The password provided is too weak.'));
+      } else if (e.code == 'email-already-in-use') {
+        emit(
+          RegisterError(message: 'The account already exists for that email.'),
+        );
+      }
+    } catch (e) {
       emit(RegisterError(message: 'Please try again'));
     }
   }
 
-  Future<void> addUser(String userName, String email, String password) {
+  Future<void> addUser(
+    String userName,
+    String phone,
+    String email,
+    String password,
+  ) {
     return users
-        .add({'userName': userName, 'email': email, 'password': password})
+        .add({
+          'userName': userName,
+          'phone': phone,
+          'email': email,
+          'password': password,
+        })
         .then((value) => log("User Added"))
         .catchError((error) => log("Failed to add user: $error"));
   }

@@ -5,7 +5,7 @@ import 'package:coffee_shop/core/widgets/custom_text_field.dart';
 import 'package:coffee_shop/core/widgets/gap.dart';
 import 'package:coffee_shop/features/Auth/register/logic/cubit/register_cubit.dart';
 import 'package:coffee_shop/features/Auth/register/logic/cubit/register_state.dart';
-import 'package:coffee_shop/features/Auth/ui/widget/pass_container.dart';
+import 'package:coffee_shop/core/widgets/pass_text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -129,6 +129,22 @@ class RegisterScreen extends StatelessWidget {
                           CustomTextField(
                             hint: 'Enter username',
                             controller: context.read<RegisterCubit>().userName,
+                          ),
+                          GapH(height: 20),
+                          Text(
+                            'Phone Number',
+                            style: TextStyle(
+                              color: AppColor.green,
+                              fontSize: 14.sp,
+                              fontFamily: 'Poppins',
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
+
+                          GapH(height: 8),
+                          CustomTextField(
+                            hint: 'Enter phone number',
+                            controller: context.read<RegisterCubit>().phone,
                           ),
                           GapH(height: 20),
                           Text(
