@@ -1,4 +1,4 @@
-import 'package:coffee_shop/features/account/account_screen.dart';
+import 'package:coffee_shop/features/account/ui/account_screen.dart';
 import 'package:coffee_shop/features/app_navigation/sala.dart';
 import 'package:coffee_shop/features/orders/ui/screens/orders_screen.dart';
 import 'package:flutter/material.dart';

@@ -51,6 +51,7 @@ class RegisterCubit extends Cubit<RegisterState> {
           'phone': phone,
           'email': email,
           'password': password,
+          'date': DateTime.now(),
         })
         .then((value) => log("User Added"))
         .catchError((error) => log("Failed to add user: $error"));
