@@ -12,7 +12,7 @@ class OrderDetailsCubit extends Cubit<OrderDetailsState> {
     emit(OrderDetailsLoading());
     try {
       orders.add({
-        'user': firestore.currentUser!.uid,
+        'emai;': firestore.currentUser!.email,
         'price': price * amount,
         'amount': amount,
       });

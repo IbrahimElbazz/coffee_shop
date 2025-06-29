@@ -41,6 +41,7 @@ class OrderDetailsScreen extends StatelessWidget {
                 message: 'Order added successfully',
                 type: ToastificationType.success,
               );
+              context.read<OrderDetailsCubit>().amount = 1;
             } else if (state is AddOrderFailure) {
               CustomSnackBar.show(
                 context: context,
