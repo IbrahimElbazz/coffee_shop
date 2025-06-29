@@ -1,15 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../logic/cubit/order_details_cubit.dart';
+
 class Counter extends StatefulWidget {
-  const Counter({super.key});
+  Counter({super.key, required this.price, required this.amount});
+  int price;
+  int amount;
 
   @override
   State<Counter> createState() => _CounterState();
 }
 
 class _CounterState extends State<Counter> {
-  int counter = 1;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -33,9 +37,7 @@ class _CounterState extends State<Counter> {
               children: [
                 IconButton(
                   onPressed: () {
-                    setState(() {
-                      counter++;
-                    });
+                    context.read<OrderDetailsCubit>().incrementAmount();
                   },
                   icon: Icon(Icons.add),
                 ),
@@ -63,7 +65,7 @@ class _CounterState extends State<Counter> {
                         width: 24.w,
                         height: 20.h,
                         child: Text(
-                          counter.toString(),
+                          widget.amount.toString(),
                           textAlign: TextAlign.center,
                           style: TextStyle(
                             color: Colors.black,
@@ -78,10 +80,7 @@ class _CounterState extends State<Counter> {
                 ),
                 IconButton(
                   onPressed: () {
-                    if (counter == 1) return;
-                    setState(() {
-                      counter--;
-                    });
+                    context.read<OrderDetailsCubit>().decrementAmount();
                   },
                   icon: Icon(Icons.remove),
                 ),
@@ -89,7 +88,7 @@ class _CounterState extends State<Counter> {
             ),
           ),
           Text(
-            '\$${6.99 * counter}',
+            '\$${widget.price * widget.amount}',
             textAlign: TextAlign.right,
             style: TextStyle(
               color: Colors.black,

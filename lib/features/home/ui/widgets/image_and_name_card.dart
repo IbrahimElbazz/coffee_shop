@@ -1,6 +1,6 @@
-import 'package:coffee_shop/core/widgets/gap.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 class ImageAndNameCard extends StatelessWidget {
   const ImageAndNameCard({super.key, required this.title, required this.image});
@@ -24,7 +24,14 @@ class ImageAndNameCard extends StatelessWidget {
           Hero(
             transitionOnUserGestures: true,
             tag: title,
-            child: Image.asset(image, width: 150.w, height: 150.h),
+            child: CachedNetworkImage(
+              imageUrl: image,
+              width: 150.w,
+              height: 150.h,
+              fit: BoxFit.cover,
+              placeholder: (context, url) => const CircularProgressIndicator(),
+              errorWidget: (context, url, error) => const Icon(Icons.error),
+            ),
           ),
 
           Text(

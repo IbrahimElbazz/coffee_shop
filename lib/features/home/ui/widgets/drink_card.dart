@@ -8,12 +8,14 @@ class DrinkCard extends StatefulWidget {
     super.key,
     required this.title,
     required this.image,
-    this.fav,
+    // this.fav,
     this.isFavorite = false,
+    required this.price,
   });
   final String title;
   final Widget image;
-  void Function()? fav;
+  final int price;
+  // void Function()? fav;
 
   bool isFavorite;
 
@@ -50,7 +52,7 @@ class _DrinkCardState extends State<DrinkCard> {
                 height: 20.h,
                 child: IconButton(
                   padding: EdgeInsets.zero,
-                  onPressed: widget.fav,
+                  onPressed: () {},
                   icon: SvgPicture.asset(
                     'assets/icons/love.svg',
                     color: widget.isFavorite ? Colors.red : Colors.grey,
@@ -64,6 +66,17 @@ class _DrinkCardState extends State<DrinkCard> {
           GapH(height: 10),
           Text(
             widget.title,
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              color: const Color(0xFF212121),
+              fontSize: 16.sp,
+              fontFamily: 'Poppins',
+              fontWeight: FontWeight.w500,
+            ),
+          ),
+          GapH(height: 5),
+          Text(
+            "${widget.price.toString()} \$",
             textAlign: TextAlign.center,
             style: TextStyle(
               color: const Color(0xFF212121),
